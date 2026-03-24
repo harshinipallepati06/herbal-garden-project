@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="background:#f4f7f6;">
+
+<nav class="navbar navbar-dark bg-success">
+    <div class="container">
+        <span class="navbar-brand">🌿 Herbal Garden</span>
+    </div>
+</nav>
+
+<div class="container mt-4">
+
+    <h2 class="text-center mb-4">
+        Recommendations for {{ disease|capitalize }}
+    </h2>
+    <h4>🧠 Health Analysis</h4>
+<p>
+Based on your condition (<b>{{ disease }}</b>) and severity (<b>{{ severity }}</b>),
+the following Ayurvedic remedies are recommended.
+</p>
+
+    <!-- PLANTS -->
+    <h4>🌿 Medicinal Plants</h4>
+    <div class="row">
+        {% for plant in plants %}
+        <div class="col-md-4">
+            <div class="card shadow mb-4">
+                <img src="{{ url_for('static', filename='images/' + plant.image) }}" class="card-img-top">
+                <div class="card-body">
+                    <h5>{{ plant.plant_name }}</h5>
+                    <p><b>Usage:</b> {{ plant.usage }}</p>
+                    <p><b>Precautions:</b> {{ plant.precautions }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <h4>💡 Usage Guidelines</h4>
+<ul>
+    <li>Follow recommended dosage carefully</li>
+    <li>Prefer fresh herbal preparation</li>
+    <li>Consult doctor if symptoms persist</li>
+</ul>
+<h4>🧘 Lifestyle Recommendations</h4>
+<ul>
+    <li>Drink warm water regularly</li>
+    <li>Avoid cold foods</li>
+    <li>Practice steam inhalation</li>
+    <li>Do breathing exercises (Pranayama)</li>
+</ul>
+    <!-- DOCTORS -->
+    <h4 class="mt-4">👨‍⚕️ Doctors in {{ location|capitalize }}</h4>
+
+<div class="row">
+    {% for doc in doctors %}
+    <div class="col-md-4">
+        <div class="card shadow mb-4 p-3">
+
+            <h5>{{ doc.name }}</h5>
+
+            <p><b>Specialization:</b> {{ doc.specialization }}</p>
+            <p><b>Experience:</b> {{ doc.experience }} years</p>
+
+            <p><b>Hospital:</b> {{ doc.hospital }}</p>
+            <p><b>Address:</b> {{ doc.address }}</p>
+
+            <p><b>Contact:</b> {{ doc.contact }}</p>
+
+            <!-- 🔥 CALL BUTTON -->
+            <a href="tel:{{ doc.contact }}" class="btn btn-success w-100 mb-2">
+                📞 Call Now
+            </a>
+
+            <!-- 🔥 MAP BUTTON -->
+            <a href="https://www.google.com/maps/search/{{ doc.address }}" target="_blank" class="btn btn-outline-success w-100">
+                📍 View Location
+            </a>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+    
+    <div class="text-center mt-3">
+        <a href="/" class="btn btn-outline-success">Go Back</a>
+    </div>
+
+</div>
+
+</body>
+</html>
