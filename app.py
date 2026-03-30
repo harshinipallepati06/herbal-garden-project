@@ -1,4 +1,5 @@
 print("Running")
+from ml_model import predict_disease
 from flask import Flask, render_template, request
 import pandas as pd
 print("App")
@@ -17,9 +18,12 @@ def home():
 
 @app.route('/result', methods=['POST'])
 def result():
-    disease = request.form['disease'].lower()
-    severity = request.form['severity']
-    breathing = request.form['breathing']
+    cough = int(request.form['cough'])
+    fever = int(request.form['fever'])
+    breathing = int(request.form['breathing'])
+
+# 🔥 ML prediction
+    disease = predict_disease(cough, fever, breathing)
     location = request.form['location'].lower()
 
     filtered_plants = plants[plants['disease'] == disease]
@@ -36,7 +40,6 @@ def result():
     return render_template(
         "result.html",
         disease=disease,
-        severity=severity,
         breathing=breathing,
         location=location,
         plants=filtered_plants.to_dict(orient='records'),

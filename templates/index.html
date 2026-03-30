@@ -97,33 +97,28 @@ label {
                     <form action="/result" method="post">
 
                         <div class="mb-3">
-                            <label>Condition</label>
-                            <select class="form-select" name="disease" required>
-                                <option value="">Select Condition</option>
-                                <option>Cough</option>
-                                <option>Cold</option>
-                                <option>Asthma</option>
-                                <option>Bronchitis</option>
-                                <option>Sinusitis</option>
-                            </select>
-                        </div>
+    <label>Cough</label>
+    <select class="form-select" name="cough">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
 
-                        <div class="mb-3">
-                            <label>Severity</label>
-                            <select class="form-select" name="severity">
-                                <option>Mild</option>
-                                <option>Moderate</option>
-                                <option>Severe</option>
-                            </select>
-                        </div>
+<div class="mb-3">
+    <label>Fever</label>
+    <select class="form-select" name="fever">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
 
-                        <div class="mb-3">
-                            <label>Breathing Difficulty</label>
-                            <select class="form-select" name="breathing">
-                                <option>No</option>
-                                <option>Yes</option>
-                            </select>
-                        </div>
+<div class="mb-3">
+    <label>Breathing Difficulty</label>
+    <select class="form-select" name="breathing">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select>
+</div>
 
                         <div class="mb-3">
                             <label>Location</label>
